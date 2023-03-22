@@ -43,7 +43,7 @@ demo_cols.sample(3).style.set_properties(**{'text-align': 'left'}).set_table_sty
 # VADER is specifically attuned to sentiments expressed in social media. It uses a combination of sentiment-related words and emojis, along with some simple heuristics (punctuation, capitalisation, degree modifiers, conjuctions), to assign a sentiment score (positive, negative, or neutral) to a given piece of text. It's output sentiment score is a numeric score between -1 and +1. The word sentiment scores range from -4 to 4 (neg to pos). <br> <br>
 # Example of some words in the lexicon and their scores: <br> 
 
-# In[2]:
+# In[3]:
 
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer    # VADER
@@ -77,7 +77,7 @@ import seaborn as sns
 sns.set_style("darkgrid")
 
 
-# In[3]:
+# In[5]:
 
 
 lex = pd.Series(sa.lexicon).to_frame()
@@ -87,7 +87,7 @@ lex[1010:1020]
 
 # A sample of how the VADER lexicon would classify the AIFER dataset (english tweets only):
 
-# In[4]:
+# In[6]:
 
 
 # english only
@@ -124,7 +124,7 @@ aifer_en_copy_demo.sample(4).style.set_properties(**{'text-align': 'left'}).set_
 # 
 # 
 
-# In[5]:
+# In[6]:
 
 
 from bs4 import BeautifulSoup
@@ -153,7 +153,7 @@ from nltk.tokenize import TweetTokenizer
 # - `createplot(dataframe, title)`: Generates a histogram plot showing the sentiment scores that are added to the dataset.
 # - `split_test_train(dataframe)`: function to split up an input dataframe into 80% training and 20% testing data. Both training and testing datasets are split into x (text) and y (labels). 
 
-# In[6]:
+# In[8]:
 
 
 def process_tweet(tweet):
@@ -413,7 +413,7 @@ def split_test_train(dataframe, name):
 # $$
 # 
 
-# In[7]:
+# In[9]:
 
 
 def train_naive_bayes(freqs, train_x, train_y):
@@ -476,7 +476,7 @@ def train_naive_bayes(freqs, train_x, train_y):
     return logprior, loglikelihood
 
 
-# In[8]:
+# In[10]:
 
 
 def naive_bayes_predict(tweet, logprior, loglikelihood):
@@ -508,7 +508,7 @@ def naive_bayes_predict(tweet, logprior, loglikelihood):
     return p
 
 
-# In[9]:
+# In[11]:
 
 
 def test_naive_bayes(test_x, test_y, logprior, loglikelihood, naive_bayes_predict=naive_bayes_predict):
@@ -551,7 +551,7 @@ def test_naive_bayes(test_x, test_y, logprior, loglikelihood, naive_bayes_predic
 # <br>
 # SemEval 2014 (Task 4)
 
-# In[10]:
+# In[7]:
 
 
 # load from url
@@ -583,7 +583,7 @@ semeval.head(5)
 
 # ... and the Twemlab Goldstandard
 
-# In[11]:
+# In[5]:
 
 
 # Load TwEmLab Goldstandard
@@ -634,14 +634,14 @@ twemlab['sentiment'] = np.where((twemlab['label'] == 'beauty') | (twemlab['label
                                  np.where(twemlab['label'] == 'none', -1, 0))
 
 
-# In[12]:
+# In[6]:
 
 
 # check dataset
 twemlab[5:10]
 
 
-# In[13]:
+# In[16]:
 
 
 # Split both datasets into training and testing subsets and show overall sentiment distribution
@@ -649,7 +649,7 @@ train_x, test_x, train_y, test_y = split_test_train(semeval, "SemEval")
 train_x_tw, test_x_tw, train_y_tw, test_y_tw = split_test_train(twemlab, "Twemlab")
 
 
-# In[14]:
+# In[17]:
 
 
 # TRAIN SEMEVAL NAIVE BAYES
@@ -686,7 +686,7 @@ for i in range(10):
 logprior1, loglikelihood1 = train_naive_bayes(freqs1, train_x_tw, train_y_tw)
 
 
-# In[15]:
+# In[18]:
 
 
 # Experiment with your own "tweet", e.g. "looks great" or "having a bad day"

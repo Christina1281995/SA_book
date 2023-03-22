@@ -159,13 +159,13 @@ twemlab_boston = twemlab_boston[0:631]
 twemlab_boston.head()
 
 
-# In[4]:
+# In[5]:
 
 
 print(len(twemlab_birmingham))
 
 
-# In[5]:
+# In[6]:
 
 
 emotions = []
@@ -192,7 +192,7 @@ twemlab_boston.head(20)
 
 # ### Helper Functions for Aspect Term Labelling and Reformatting
 
-# In[6]:
+# In[7]:
 
 
 import math
@@ -219,7 +219,7 @@ def splitdataset(df, chunksize):
   return list_of_chunks
 
 
-# In[7]:
+# In[15]:
 
 
 def annotate_aspects(df, text_col, emotions_col):
@@ -319,7 +319,7 @@ def annotate_aspects(df, text_col, emotions_col):
 # 
 # This step requires iteratively uncommenting the individual subsets below to annotate them one after the other
 
-# In[8]:
+# In[16]:
 
 
 # choose and keep track of how many already annotated
@@ -330,7 +330,7 @@ all_docs = []
 i = 0
 
 
-# In[9]:
+# In[33]:
 
 
 # split whole dataframe into subsets of 100 tweets each
@@ -361,14 +361,14 @@ i = 0
 
 
 
-# In[10]:
+# In[37]:
 
 
 print(len(all_docs))
 print(i)
 
 
-# In[11]:
+# In[36]:
 
 
 # split into subsets of 20 tweets that will be saved on the go

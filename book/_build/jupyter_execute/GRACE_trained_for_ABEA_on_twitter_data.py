@@ -77,7 +77,7 @@ import xml.etree.cElementTree as ET                                    # XML fil
 # ```
 # 
 
-# In[2]:
+# In[3]:
 
 
 # args set as per instructions by authors
@@ -123,7 +123,7 @@ args = argparse.Namespace(
     decoder_shared_layer=3)
 
 
-# In[3]:
+# In[4]:
 
 
 random.seed(args.seed)
@@ -136,7 +136,7 @@ torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
 
 
-# In[4]:
+# In[5]:
 
 
 # manually setting device and gpu parameters
@@ -145,7 +145,7 @@ n_gpu = 1
 data_name = args.data_name.lower()
 
 
-# In[5]:
+# In[6]:
 
 
 task_name = args.task_name.lower()
@@ -158,7 +158,7 @@ task_config = {
 }
 
 
-# In[6]:
+# In[7]:
 
 
 def dataloader_val(args, tokenizer, file_path, label_tp_list, set_type="val"):
@@ -188,14 +188,14 @@ def dataloader_val(args, tokenizer, file_path, label_tp_list, set_type="val"):
     return eval_dataloader, eval_data
 
 
-# In[7]:
+# In[8]:
 
 
 # load bert tokenizer (bert-base-uncased)
 tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
 
 
-# In[8]:
+# In[9]:
 
 
 DATASET_DICT={}
@@ -211,7 +211,7 @@ DATASET_DICT["twemlab_all"] = {"train_file":"twemlab_all_train.txt", "valid_file
     
 
 
-# In[9]:
+# In[10]:
 
 
 if data_name in DATASET_DICT:
@@ -224,14 +224,14 @@ else:
     assert args.test_file is not None
 
 
-# In[10]:
+# In[11]:
 
 
 file_path = os.path.join(args.data_dir, args.train_file)
 print(file_path)
 
 
-# In[11]:
+# In[12]:
 
 
 # ATEASCProcessor reads data and splits it into corpus and label list for ATE and ASC
@@ -248,7 +248,7 @@ num_tp_labels = (at_num_labels, as_num_labels)
 task_config["at_labels"] = label_tp_list[0]
 
 
-# In[12]:
+# In[13]:
 
 
 at_label_list, as_label_list = label_tp_list
@@ -259,7 +259,7 @@ print(at_label_map)
 print(as_label_map)
 
 
-# In[13]:
+# In[14]:
 
 
 def load_model(model_file, args, num_tp_labels, task_config, device):
@@ -276,7 +276,7 @@ def load_model(model_file, args, num_tp_labels, task_config, device):
     return model
 
 
-# In[14]:
+# In[15]:
 
 
 # set model file to the last saved model after training epochs completed
@@ -289,7 +289,7 @@ model_file = '../GRACE/out_twemlab_all_ateacs/pytorch_model.bin.9'
 model = load_model(model_file, args, num_tp_labels, task_config, device)
 
 
-# In[15]:
+# In[16]:
 
 
 if hasattr(model, 'module'):
@@ -299,7 +299,7 @@ if hasattr(model, 'module'):
 # print(model)
 
 
-# In[16]:
+# In[17]:
 
 
 # set model to eval mode (turn off training features e.g. dropout)
@@ -311,32 +311,32 @@ model.eval()
 # This code block serves to ensure the model loaded correctly.
 # Uses just the last entry in twitter_1_train.txt
 
-# In[17]:
+# In[ ]:
 
 
 DATALOADER_DICT = {}
 
 
-# In[18]:
+# In[ ]:
 
 
 DATALOADER_DICT["ate_asc"] = {"eval": dataloader_val}
 
 
-# In[19]:
+# In[ ]:
 
 
 if task_name not in DATALOADER_DICT:
     raise ValueError("Task not found: %s" % (task_name))
 
 
-# In[20]:
+# In[ ]:
 
 
 eval_dataloader, eval_examples = DATALOADER_DICT[task_name]["eval"](args, tokenizer, file_path, label_tp_list=label_tp_list, set_type="val")
 
 
-# In[21]:
+# In[ ]:
 
 
 for input_ids, input_mask, segment_ids, at_label_ids, as_label_ids, label_mask, label_mask_X in eval_dataloader:
@@ -349,7 +349,7 @@ for input_ids, input_mask, segment_ids, at_label_ids, as_label_ids, label_mask, 
     label_mask_X = label_mask_X.to(device)
 
 
-# In[22]:
+# In[ ]:
 
 
 with torch.no_grad():
@@ -363,7 +363,7 @@ with torch.no_grad():
     decoder_logits = decoder_logits.detach().cpu().numpy()
 
 
-# In[23]:
+# In[ ]:
 
 
 at_label_ids = at_label_ids.to('cpu').numpy()
@@ -371,7 +371,7 @@ as_label_ids = as_label_ids.to('cpu').numpy()
 label_mask = label_mask.to('cpu').numpy()
 
 
-# In[24]:
+# In[ ]:
 
 
 for i, mask_i in enumerate(label_mask):
@@ -400,7 +400,7 @@ print(temp_22)
 
 # #### Load Dataset
 
-# In[25]:
+# In[82]:
 
 
 # Load TwEmLab Goldstandard
@@ -463,7 +463,7 @@ twemlab.head()
 
 # ##### Re-Format Text to match GRACE Input
 
-# In[26]:
+# In[20]:
 
 
 # text column to list
@@ -489,7 +489,7 @@ for tweet in text_list:
 
 # #### Save to .txt File
 
-# In[27]:
+# In[21]:
 
 
 path_to_reformatted_data = "../Data/twemlab_goldstandards_original/original_reformatted_with_0s/twemlab_birmingham_formatted.txt"
@@ -503,7 +503,7 @@ with open(path_to_reformatted_data, mode = "w") as f:
 
 # ##### Run GRACE Model on reformatted .txt File
 
-# In[28]:
+# In[22]:
 
 
 DATALOADER_DICT = {}
@@ -511,7 +511,7 @@ DATALOADER_DICT = {}
 DATALOADER_DICT["ate_asc"] = {"eval":dataloader_val}
 
 
-# In[29]:
+# In[23]:
 
 
 eval_dataloader, eval_examples = DATALOADER_DICT[task_name]["eval"](args, tokenizer, path_to_reformatted_data, label_tp_list=label_tp_list, set_type="val")
@@ -1546,141 +1546,3 @@ folium_map = create_folium_map(df = data_copy,
 # display map
 folium_map
 
-
-# <hr>
-# 
-# #### Discussion Topics
-# 
-# - The **label frequencies** of the training dataset. This is the distribution of the overall 1625 goldstandard emotion labels:
-
-# In[90]:
-
-
-# Load TwEmLab Goldstandard for Birmingham
-tree1 = ET.parse('../Data/twemlab_goldstandards_original/birmingham_labels.xml')
-root1 = tree1.getroot()
-
-# check contents
-#root1[0][1].text
-
-# create dataframe from xml file
-data1 = []
-for tweet in root1.findall('Tweet'):
-    id = tweet.find('ID').text
-    label = tweet.find('Label').text
-    data1.append((id, label))
-
-df1 = pd.DataFrame(data1,columns=['id','label'])
- # df1.head()
-    
-# Load TwEmLab Birmingham Tweets
-tree2 = ET.parse('../Data/twemlab_goldstandards_original/birmingham_tweets.xml')
-root2 = tree2.getroot()
-
-# check contents
-# root2[0][1].text
-
-# create dataframe from xml file
-data2 = []
-for tweet in root2.findall('Tweet'):
-    id = tweet.find('ID').text
-    text = tweet.find('text').text
-    goldstandard = tweet.attrib.get("goldstandard")
-    data2.append((id, text, goldstandard))
-
-df2 = pd.DataFrame(data2,columns=['id','text', 'goldstandard'])
-# df2.head()
-
- # merge the two separate dataframes based on id columns
-merge = pd.merge(df1, df2, on='id')
-
-# keep only the tweets that are part of the goldstandard
-twemlab = merge[merge['goldstandard'] == 'yes']
-print(f'Number of tweets in goldstandard: {len(twemlab)}')
-
-emotions = []
-# assign emotion label (happiness, anger, sadness, fear)
-for index, row in twemlab.iterrows():
-    if row['label'] == 'beauty' or row['label'] == 'happiness':
-        emotions.append('happiness')
-    elif row['label'] == 'anger/disgust':
-        emotions.append('anger')
-    elif row['label'] == 'sadness':
-        emotions.append('sadness')
-    elif row['label'] == 'fear':
-        emotions.append('fear')
-    else: 
-        emotions.append('none')
-        
-twemlab['emotion'] = emotions
-
-twemlab_birmingham = twemlab[['id','text','emotion']]
-
-# check dataset
-# twemlab_birmingham.head(20)
-
-readfile = pd.read_csv('../Data/twemlab_goldstandards_original/boston_goldstandard.csv')
-twemlab_boston = readfile[['Tweet_ID', 'Tweet_timestamp', 'Tweet_text', 'Tweet_goldstandard_attribute', 'Tweet_longitude','Tweet_latitude','Tweet_timestamp','Emotion']]
-# use only rows that have text in them
-twemlab_boston = twemlab_boston[0:631]
-# twemlab_boston.head()
-
-emotions = []
-# assign emotion label (happiness, anger, sadness, fear)
-for index, row in twemlab_boston.iterrows():
-    if row['Emotion'] == 'beauty' or row['Emotion'] == 'happiness':
-        emotions.append('happiness')
-    elif row['Emotion'] == 'anger/disgust':
-        emotions.append('anger')
-    elif row['Emotion'] == 'sadness':
-        emotions.append('sadness')
-    elif row['Emotion'] == 'fear':
-        emotions.append('fear')
-    else: 
-        emotions.append('none')
-        
-twemlab_boston['emotion'] = emotions
-
-twemlab_boston = twemlab_boston[['Tweet_ID','Tweet_text','emotion']]
-
-# check dataset
-# twemlab_boston.head(20)
-
-
-# In[96]:
-
-
-# extract the emotion column from both dfs and merge
-brim_emo = twemlab_birmingham[['emotion']]
-bost_emo = twemlab_boston[['emotion']]
-
-emotions_in_twemlab_all = brim_emo.append(bost_emo, ignore_index=True)
-print(len(emotions_in_twemlab_all))
-
-
-# In[97]:
-
-
-#value_counts = twemlab['label'].value_counts()
-value_counts = emotions_in_twemlab_all['emotion'].value_counts().reset_index()
-value_counts = value_counts.rename(columns={'index': 'Value', 'emotion': 'Frequency'})
-df_value_counts = pd.DataFrame(value_counts)
-
-dem_cols = df_value_counts[['Value', 'Frequency']]
-dem_cols
-
-
-# - **Size and standard of training data**: The overall size of the training data for twemlab is 1625 and its aspect terms have been annotated by one individual "ad hoc" as per "Annotating Twemlab Goldstandard Files to Include Aspect Term Labels".</li>
-# 
-# - **Mearsuring performance**: a robust testing dataset is needed. Above, I have shown a makeshift performance measure on the same dataset that the model was trained on. Drawing any meaningful conclusions based on this is precarious.
-# 
-# - **Training capacities**: Batch size reduced due to out-of-memory errors. GRACE training is memory intensive (the authors use a nvidia tesla v100 gpu). Potential options: reduce float point precision? Currently having issues installing conda package for apex to do so. 
-# 
-# - **Model optimisation**? The GRACE model uses GeLU (an "advanced" activation function), the standard BERT nn.embeddings layer, 12 transformer encoder layers and 2 decoder layers. On top of that it has two classification heads (both nn.Linear). During training the model uses additional functions for virtaul adversarial training and gradient harmonized loss calculation.
-
-# Potential research questions:
-# 
-# - How can geosocial media analysis benefit from aspect-based emotion analysis? What can an emotion analysis offer compared to sentiments?
-# - How does the ABSA Model “GRACE”, trained for emotion classification, compare to other state-of-the-art aspect-based-emotion-analysis methods?
-# - Can the “GRACE” model be further optimised for geosocial media analyses?
-# 

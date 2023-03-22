@@ -145,8 +145,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Sentiment%20Analysis%20for%20Disaster%20Responses.html">
+   Sentiment Analysis in the Context of Disaster Responses
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Datasets.html">
    Datasets for Sentiment Analysis and Aspect-Based Sentiment Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Thesis%20Progress.html">
+   Thesis Progress
   </a>
  </li>
 </ul>
@@ -422,11 +432,6 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discussion-topics">
-     Discussion Topics
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -514,11 +519,6 @@ title="Print to PDF"
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discussion-topics">
-     Discussion Topics
-    </a>
    </li>
   </ul>
  </li>
@@ -38278,80 +38278,7 @@ Rene
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
-<hr>
 </section>
-</section>
-<section id="discussion-topics">
-<h3>Discussion Topics<a class="headerlink" href="#discussion-topics" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>The <strong>label frequencies</strong> of the training dataset. This is the distribution of the overall 1625 goldstandard emotion labels:</p></li>
-</ul>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Value</th>
-      <th>Frequency</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>none</td>
-      <td>916</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>happiness</td>
-      <td>495</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>anger</td>
-      <td>111</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>sadness</td>
-      <td>73</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>fear</td>
-      <td>30</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<ul class="simple">
-<li><p><strong>Size and standard of training data</strong>: The overall size of the training data for twemlab is 1625 and its aspect terms have been annotated by one individual “ad hoc” as per “Annotating Twemlab Goldstandard Files to Include Aspect Term Labels”.</li></p></li>
-<li><p><strong>Mearsuring performance</strong>: a robust testing dataset is needed. Above, I have shown a makeshift performance measure on the same dataset that the model was trained on. Drawing any meaningful conclusions based on this is precarious.</p></li>
-<li><p><strong>Training capacities</strong>: Batch size reduced due to out-of-memory errors. GRACE training is memory intensive (the authors use a nvidia tesla v100 gpu). Potential options: reduce float point precision? Currently having issues installing conda package for apex to do so.</p></li>
-<li><p><strong>Model optimisation</strong>? The GRACE model uses GeLU (an “advanced” activation function), the standard BERT nn.embeddings layer, 12 transformer encoder layers and 2 decoder layers. On top of that it has two classification heads (both nn.Linear). During training the model uses additional functions for virtaul adversarial training and gradient harmonized loss calculation.</p></li>
-</ul>
-<p>Potential research questions:</p>
-<ul class="simple">
-<li><p>How can geosocial media analysis benefit from aspect-based emotion analysis? What can an emotion analysis offer compared to sentiments?</p></li>
-<li><p>How does the ABSA Model “GRACE”, trained for emotion classification, compare to other state-of-the-art aspect-based-emotion-analysis methods?</p></li>
-<li><p>Can the “GRACE” model be further optimised for geosocial media analyses?</p></li>
-</ul>
 </section>
 </section>
 </section>

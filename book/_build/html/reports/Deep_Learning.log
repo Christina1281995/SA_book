@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\util.py", line 96, in ensure_async
-    result = await obj
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\jupyter_client\channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
     executenb(
   File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 1204, in execute
@@ -22,17 +11,98 @@ Traceback (most recent call last):
     return future.result()
   File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-# apply model to goldstandard
-robertabase_apply(dataset=twemlab)
--------------------
+  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Load TwEmLab Goldstandard
+tree1 = ET.parse('../Data/twemlab_goldstandards_original/birmingham_labels.xml')
+root1 = tree1.getroot()
+
+# check contents
+#root1[0][1].text
+
+# create dataframe from xml file
+data1 = []
+for tweet in root1.findall('Tweet'):
+    id = tweet.find('ID').text
+    label = tweet.find('Label').text
+    data1.append((id, label))
+
+df1 = pd.DataFrame(data1,columns=['id','label'])
+ # df1.head()
+    
+# Load TwEmLab Boston Tweets
+tree2 = ET.parse('../Data/twemlab_goldstandards_original/birmingham_tweets.xml')
+root2 = tree2.getroot()
+
+
+# check contents
+# root2[0][1].text
+
+# create dataframe from xml file
+data2 = []
+for tweet in root2.findall('Tweet'):
+    id = tweet.find('ID').text
+    text = tweet.find('text').text
+    goldstandard = tweet.attrib.get("goldstandard")
+    data2.append((id, text, goldstandard))
+
+df2 = pd.DataFrame(data2,columns=['id','text', 'goldstandard'])
+# df2.head()
+
+ # merge the two separate dataframes based on id columns
+merge = pd.merge(df1, df2, on='id')
+
+# keep only the tweets that are part of the goldstandard
+twemlab = merge[merge['goldstandard'] == 'yes']
+print(f'Twemlab Goldstandard dataset\nSize: {len(twemlab)}\nPolarity: (1 pos, 0 neu, -1 neg)\nSample of the data:')
+
+sentimemt_label_three = []
+# assign sentiment label (0, 1) based on emotion
+for index, row in twemlab.iterrows():
+    if row['label'] == 'beauty' or row['label'] == 'happiness':
+        sentimemt_label_three.append(1)
+    elif row['label'] == 'none':
+        sentimemt_label_three.append(0)
+    else: 
+        sentimemt_label_three.append(-1)
+        
+twemlab['sentiment_label'] = sentimemt_label_three
+
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [1;32mIn[4], line 2[0m
+[0;32m      1[0m [38;5;66;03m# Load TwEmLab Goldstandard[39;00m
+[1;32m----> 2[0m tree1 [38;5;241m=[39m [43mET[49m[38;5;241;43m.[39;49m[43mparse[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m../Data/twemlab_goldstandards_original/birmingham_labels.xml[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[0;32m      3[0m root1 [38;5;241m=[39m tree1[38;5;241m.[39mgetroot()
+[0;32m      5[0m [38;5;66;03m# check contents[39;00m
+[0;32m      6[0m [38;5;66;03m#root1[0][1].text[39;00m
+[0;32m      7[0m 
+[0;32m      8[0m [38;5;66;03m# create dataframe from xml file[39;00m
+
+File [1;32mD:\Users\Christina\Programmes\envs\GRACE_GPU\lib\xml\etree\ElementTree.py:1222[0m, in [0;36mparse[1;34m(source, parser)[0m
+[0;32m   1213[0m [38;5;124;03m"""Parse XML document into element tree.[39;00m
+[0;32m   1214[0m 
+[0;32m   1215[0m [38;5;124;03m*source* is a filename or file object containing XML data,[39;00m
+[1;32m   (...)[0m
+[0;32m   1219[0m 
+[0;32m   1220[0m [38;5;124;03m"""[39;00m
+[0;32m   1221[0m tree [38;5;241m=[39m ElementTree()
+[1;32m-> 1222[0m [43mtree[49m[38;5;241;43m.[39;49m[43mparse[49m[43m([49m[43msource[49m[43m,[49m[43m [49m[43mparser[49m[43m)[49m
+[0;32m   1223[0m [38;5;28;01mreturn[39;00m tree
+
+File [1;32mD:\Users\Christina\Programmes\envs\GRACE_GPU\lib\xml\etree\ElementTree.py:569[0m, in [0;36mElementTree.parse[1;34m(self, source, parser)[0m
+[0;32m    567[0m close_source [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[0;32m    568[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mhasattr[39m(source, [38;5;124m"[39m[38;5;124mread[39m[38;5;124m"[39m):
+[1;32m--> 569[0m     source [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m[43msource[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[0;32m    570[0m     close_source [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[0;32m    571[0m [38;5;28;01mtry[39;00m:
+
+[1;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../Data/twemlab_goldstandards_original/birmingham_labels.xml'
+FileNotFoundError: [Errno 2] No such file or directory: '../Data/twemlab_goldstandards_original/birmingham_labels.xml'
 

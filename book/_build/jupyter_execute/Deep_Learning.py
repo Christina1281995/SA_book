@@ -499,7 +499,7 @@ for index, row in twemlab.iterrows():
 twemlab['sentiment_label'] = sentimemt_label_three
 
 
-# In[5]:
+# In[7]:
 
 
 # show df
@@ -513,7 +513,7 @@ demo_cols_tl.sample(3).style.set_properties(**{'text-align': 'left'}).set_table_
 
 # SemEval 2014 Dataset (1 pos, 0 neu, -1 neg)
 
-# In[6]:
+# In[5]:
 
 
 # load from url
@@ -549,7 +549,7 @@ col_names = {'text': 'Text', 'polarity': 'Polarity', 'sentimemt':'Sentiment'}
 demo_cols_se = demo_cols_se.rename(columns=col_names)
 
 
-# In[7]:
+# In[6]:
 
 
 # # check dataset
@@ -558,7 +558,7 @@ demo_cols_se.sample(3).style.set_properties(**{'text-align': 'left'}).set_table_
 
 # Twitter dataset from AIFER for sentiment classification (no labels)
 
-# In[8]:
+# In[7]:
 
 
 # Load AIFER Dataset
@@ -571,7 +571,7 @@ col_names = {'date': 'Date', 'text': 'Text', 'tweet_lang': 'Language'}
 demo_cols = demo_cols.rename(columns=col_names)
 
 
-# In[9]:
+# In[8]:
 
 
 demo_cols.sample(3).style.set_properties(**{'text-align': 'left'}).set_table_styles([dict(selector = 'th', props=[('text-align', 'left')])])
@@ -640,7 +640,7 @@ demo_cols.sample(3).style.set_properties(**{'text-align': 'left'}).set_table_sty
 # <img src="https://raw.githubusercontent.com/nlp-with-transformers/notebooks/e3850199388f4983cc9799135977f0a6b06d5a79//images/chapter03_multihead-attention.png">
 # 
 
-# In[10]:
+# In[2]:
 
 
 from transformers import AutoTokenizer
@@ -655,14 +655,14 @@ text = "The hurricane trashed our entire garden"
 
 # Here's a visual representation of the attention machism at work with a demo text "The hurricane trashed our entire garden":
 
-# In[11]:
+# In[3]:
 
 
 text = "The hurricane trashed our entire garden"
 show(model, "bert", tokenizer, text, display_mode="light", layer=0, head=8)
 
 
-# In[12]:
+# In[5]:
 
 
 from transformers import AutoTokenizer, AutoModel, utils
@@ -683,7 +683,7 @@ with open("head_view.html", 'w') as file:
     file.write(html_head_view.data)
 
 
-# In[13]:
+# In[8]:
 
 
 # Import specialized versions of models (that return query/key vectors)
@@ -703,14 +703,14 @@ with open("neuron_view.html", 'w') as file:
     file.write(html_neuron_view.data)
 
 
-# In[14]:
+# In[17]:
 
 
 from IPython.display import display, HTML
 display(HTML('https://raw.githubusercontent.com/Christina1281995/demo-repo/main/neuron_view.html'))
 
 
-# In[15]:
+# In[18]:
 
 
 from IPython.display import display, HTML
@@ -740,14 +740,14 @@ display(HTML('neuron_view.html'))
 # <img src="https://raw.githubusercontent.com/nlp-with-transformers/notebooks/e3850199388f4983cc9799135977f0a6b06d5a79//images/chapter02_encoder-feature-based.png" width="60%">
 # 
 
-# In[16]:
+# In[55]:
 
 
 # load as datasetdict
 semeval = load_dataset("csv", data_files="..\Data\Restaurants_Train_v2.csv", sep=",",names=["text", "label_name", "label"])
 
 
-# In[17]:
+# In[68]:
 
 
 model_ckpt = "distilbert-base-uncased"
@@ -779,7 +779,7 @@ semeval_encoded.set_format("torch",columns=["input_ids", "attention_mask", "labe
 semeval_hidden = semeval_encoded.map(extract_hidden_states, batched=True)
 
 
-# In[18]:
+# In[69]:
 
 
 # only have train data (without validation set in this case)
@@ -790,7 +790,7 @@ print(f"The shape of [dataset_size, hidden_dim]: {X_train.shape}")
 
 # For visualisation purposes, the 768 dimensions can be reduced down to only 2 dimensions using UMAP. It will rescale each input to lie on a 2D space with values between 0 and 1 on each axis.
 
-# In[19]:
+# In[64]:
 
 
 from umap import UMAP
@@ -808,7 +808,7 @@ df_emb.head()
 
 # These 2D vectors can now be plotted: 
 
-# In[20]:
+# In[91]:
 
 
 fig, axes = plt.subplots(1, 3, figsize=(10,4))
@@ -840,7 +840,7 @@ plt.show()
 # 
 # <img src="https://raw.githubusercontent.com/nlp-with-transformers/notebooks/e3850199388f4983cc9799135977f0a6b06d5a79//images/chapter02_encoder-fine-tuning.png" width="60%">
 
-# In[21]:
+# In[ ]:
 
 
 # explain methods briefly
@@ -859,7 +859,7 @@ plt.show()
 # - **Dynamic masking** was used during training, rather than fixed masking in BERT
 # - the **next sentence prediction was left out** during training, which is arguably not essential especially when considering tweets. Here is a view of the average tweet length in the Twemlab dataset:
 
-# In[22]:
+# In[94]:
 
 
 # plot nr of words per tweet
@@ -893,7 +893,7 @@ plt.show()
 # 
 # <img src="https://github.com/Christina1281995/demo-repo/blob/main/tweeteval.PNG?raw=true" width="80%">
 
-# In[23]:
+# In[95]:
 
 
 # Preprocess text (username and link placeholders)
@@ -907,7 +907,7 @@ def preprocess(text):
     return " ".join(new_text)
 
 
-# In[24]:
+# In[96]:
 
 
 tw_rob_base_sent_lat = "cardiffnlp/twitter-roberta-base-sentiment-latest"
@@ -918,7 +918,7 @@ model_tw_rob_base_sent_lat = AutoModelForSequenceClassification.from_pretrained(
 #model.save_pretrained(tw_rob_base_sent_lat)
 
 
-# In[25]:
+# In[97]:
 
 
 # testing
@@ -937,7 +937,7 @@ for i in range(scores.shape[0]):
     print(f"{i+1}) {l} {np.round(float(s), 4)}")
 
 
-# In[26]:
+# In[101]:
 
 
 # apply in the form of a function so it can be called for usecase later on
@@ -983,7 +983,7 @@ def robertabase_apply(dataset):
     return model_name, labels
 
 
-# In[27]:
+# In[102]:
 
 
 # apply model to goldstandard

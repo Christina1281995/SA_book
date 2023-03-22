@@ -63,22 +63,23 @@ perf.style.background_gradient(cmap=cm).format(precision=2)
 # 
 # A start...
 # 
-# | # | Name | Size | Polarity | Twitter Data | Link |
-# |---|------|------|----------|--------------|------|
-# | 1 | Sentiment140| 1.6m| neg, neu, pos| yes | [link](https://www.kaggle.com/datasets/kazanova/sentiment140) |
-# | 2 | Twitter US Airline Sentiment| 55K |neg, neu, pos |yes | [link](https://raw.githubusercontent.com/ashutoshmakone/Twitter-US-Airline-Sentiment-classification/main/Dataset/Tweets.csv) |
-# | 3 | SemEval-2015 Task 10: Sentiment Analysis in Twitter|3097 | neg, neu, pos |yes| [link](https://alt.qcri.org/semeval2015/task10/index.php?id=data-and-tools)|
-# | 4 | SemEval-2016 Task 4: Sentiment Analysis in Twitter| 10K| neg, neu, pos| yes|[link](https://alt.qcri.org/semeval2016/task4/index.php?id=data-and-tools) |
-# | 4 | SemEval-2016 Task 5: Aspect-Based Sentiment Analysis| 10K| entity, attribute, pos, neu, neg, target | yes|[link](https://alt.qcri.org/semeval2016/task4/index.php?id=data-and-tools) |
-# | 5 |SemEval-2017 Task 4: Sentiment Analysis in Twitter| |neg, neu, pos | yes| [link](https://alt.qcri.org/semeval2017/task4/index.php?id=data-and-tools)|
-# | 6 | SemEval-2018 Task 1: Affect in Tweets|7K | joy, fear, anger, sadness | yes| [link](https://competitions.codalab.org/competitions/17751#learn_the_details-datasets)|
-# | 7 | The Sanders Twitter Corpus| 5K|neg, neu, pos, irrelevant |yes |[link](https://github.com/zfz/twitter_corpus) |
-# | 8 | The CrisisNLP dataset| x million (various use cases)| diverse | yes|[link](https://crisisnlp.qcri.org/) |
-# | 9 | TBCOV: Two Billion Multilingual COVID-19 Tweets with Sentiment, Entity, Geo, and Gender Labels | 2 b| neg, neu, pos| yes|[link](https://crisisnlp.qcri.org/tbcov) |
-# | 10 | Natural Hazards Twitter Dataset | 40K | pos, neg | yes | [link](https://github.com/Dong-UTIL/Natural-Hazards-Twitter-Dataset) |
-# | 11 | The TweetEval dataset| | | | |
-# | 12 | IMDb movie reviews dataset| | | | |
-# | 13 |Stanford Sentiment Treebank| | | | |
+# | # | Name | Size | Labels | Twitter Data | Natural Disaster Related | Link |
+# |---|------|------|----------|:--------------:|:-----:|-----|
+# | 1 | Sentiment140| 1.6m| neg, neu, pos| ✔ |  | [link](https://www.kaggle.com/datasets/kazanova/sentiment140) |
+# | 2 | Twitter US Airline Sentiment| 55K |neg, neu, pos | ✔ | | [link](https://raw.githubusercontent.com/ashutoshmakone/Twitter-US-Airline-Sentiment-classification/main/Dataset/Tweets.csv) |
+# | 3 | SemEval-2015 Task 10: Sentiment Analysis in Twitter|3097 | neg, neu, pos | ✔ | | [link](https://alt.qcri.org/semeval2015/task10/index.php?id=data-and-tools)|
+# | 4 | SemEval-2016 Task 4: Sentiment Analysis in Twitter| 10K| neg, neu, pos| ✔ | |[link](https://alt.qcri.org/semeval2016/task4/index.php?id=data-and-tools) |
+# | 4 | SemEval-2016 Task 5: Aspect-Based Sentiment Analysis| 10K| entity, attribute, pos, neu, neg, target | ✔ | |[link](https://alt.qcri.org/semeval2016/task4/index.php?id=data-and-tools) |
+# | 5 |SemEval-2017 Task 4: Sentiment Analysis in Twitter| |neg, neu, pos | ✔ | |[link](https://alt.qcri.org/semeval2017/task4/index.php?id=data-and-tools)|
+# | 6 | SemEval-2018 Task 1: Affect in Tweets|7K | joy, fear, anger, sadness | ✔| |[link](https://competitions.codalab.org/competitions/17751#learn_the_details-datasets)|
+# | 7 | The Sanders Twitter Corpus| 5K|neg, neu, pos, irrelevant |✔ | | [link](https://github.com/zfz/twitter_corpus) |
+# | 8 | The CrisisNLP datasets | varied (multiple case studies) | diverse | ✔ | ✔ | [link](https://crisisnlp.qcri.org/) |
+# | 9 | TBCOV: Two Billion Multilingual COVID-19 Tweets with Sentiment, Entity, Geo, and Gender Labels | 2b| neg, neu, pos| ✔ | |[link](https://crisisnlp.qcri.org/tbcov) |
+# | 10 | Natural Hazards Twitter Dataset | 40K | pos, neg | ✔ | ✔ |[link](https://github.com/Dong-UTIL/Natural-Hazards-Twitter-Dataset) |
+# | 11 | HurricaneEmo | 15K | aggressiveness, optimism, love, submission, awe, disapproval, remorse, contempt |✔ |✔|[link](https://github.com/shreydesai/hurricane) |
+# | 12 | SMILE Twitter Emotion dataset|3,085 |anger, disgust, happiness, surprise and sadness | ✔ | | [link](https://www.kaggle.com/datasets/ashkhagan/smile-twitter-emotion-dataset?resource=download) |
+# | 13 |Emotion Dataset for Emotion Recognition Tasks | ~18K | joy, sadness, anger, fear, love, surprise|✔| | [link](https://github.com/dair-ai/emotion_dataset) |
+# |14 |Twitter Reviews for Emotion Analysis|~10K|Happy, Sad, Surprise, Fear, Disgust, Angry|✔||[link](https://www.kaggle.com/datasets/shainy/twitter-reviews-for-emotion-analysis?select=data.csv)|
 
 # <hr>
 # <!-- <img src="https://www.gadget-cover.com/media/1217/premium-handsets.jpg" align="right" width="30%"> -->
@@ -105,7 +106,7 @@ perf.style.background_gradient(cmap=cm).format(precision=2)
 # <!-- _[Sentiment140 dataset with 1.6 million tweets: [see dataest](https://www.kaggle.com/datasets/kazanova/sentiment140?resource=download)]_ -->
 # _[Twitter Sentiment dataset with 30K tweets: [see dataest](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset)]_
 
-# In[2]:
+# In[98]:
 
 
 #import tensorflow as tf
@@ -156,7 +157,7 @@ import requests          # for accessing url image
 from io import BytesIO   # for accedssing url image
 
 
-# In[3]:
+# In[114]:
 
 
 normal_tweets = pd.read_csv("../Data/Disaster_responses/Tweets.csv", encoding='utf8')
@@ -203,7 +204,7 @@ show.sample(5).style.set_properties(**{'text-align': 'left'}).set_table_styles([
 
 # There's a scarcity of sentiment labelled twitter datasets. This one is derived from [The Climate Change Twitter Dataset](https://www.kaggle.com/datasets/deffro/the-climate-change-twitter-dataset):
 
-# In[4]:
+# In[19]:
 
 
 import pandas as pd
@@ -214,13 +215,13 @@ disasters.head()
 disasters['id'].to_csv('../Data/Disaster_responses/disasters_ids.csv')
 
 
-# In[5]:
+# In[10]:
 
 
 disasters.to_csv('../Data/Disaster_responses/disasters_ids_.csv')
 
 
-# In[6]:
+# In[13]:
 
 
 disasters2 = pd.read_csv('../Data/Disaster_responses/disasters_ids_.csv')
@@ -234,7 +235,7 @@ disasters_data.head()
 
 
 
-# In[7]:
+# In[21]:
 
 
 disasters_data = pd.merge(disasters2, disasters1, on="id")
@@ -244,7 +245,7 @@ disasters_data['label'] = [1 if value >= 0.3 else -1 if value <= -0.3 else 0 for
 disasters_data.head()
 
 
-# In[8]:
+# In[17]:
 
 
 print(len(disasters_data))
@@ -252,14 +253,14 @@ print(len(disasters1))
 print(len(disasters2))
 
 
-# In[9]:
+# In[14]:
 
 
 counts = disasters_data['topic'].value_counts()
 counts
 
 
-# In[10]:
+# In[118]:
 
 
 import pandas as pd
@@ -271,7 +272,7 @@ wildfires2018 = pd.read_csv("../Data/Disaster_responses/2018Wildfires.csv")
 floods2013 = pd.read_csv("../Data/Disaster_responses/2013Floods.csv")
 
 
-# In[11]:
+# In[146]:
 
 
 show_cols = harvey_data[['date', 'text']]
@@ -282,7 +283,7 @@ show_cols.sample(5).style.set_properties(**{'text-align': 'left'}).set_table_sty
 # Some pos, neg datasets however are readily available. These are a few examples from the 
 # [Natural Hazards Twitter Dataset]('https://github.com/Dong-UTIL/Natural-Hazards-Twitter-Dataset'):
 
-# In[12]:
+# In[145]:
 
 
 print(f"2017 Hurricane Harvey unlabelled dataset: {len(harvey_data)} tweets")
@@ -293,7 +294,7 @@ print(f"2013 floods in the US labelled dataset (pos, neg): {len(floods2013)} twe
 
 # ##### collapse_cell
 
-# In[13]:
+# In[16]:
 
 
 # world centroids
@@ -301,7 +302,7 @@ print(f"2013 floods in the US labelled dataset (pos, neg): {len(floods2013)} twe
 world = pd.read_csv('https://raw.githubusercontent.com/gavinr/world-countries-centroids/master/dist/countries.csv')
 
 
-# In[14]:
+# In[127]:
 
 
 import matplotlib.pyplot as plt
@@ -352,7 +353,7 @@ def plotting(pred_col, model_name):
     plt.show()
 
 
-# In[15]:
+# In[343]:
 
 
 # turn nurmal dataframe with 'geom' column into a geodataframe
@@ -669,7 +670,7 @@ def create_piechart(ratios, labels, title):
     plt.show()
 
 
-# In[16]:
+# In[121]:
 
 
 # error matrices
@@ -713,7 +714,7 @@ def calc_error_matrices(df, model_name, labels, predictions):
     return performances
 
 
-# In[17]:
+# In[286]:
 
 
 # world centroids
@@ -738,7 +739,7 @@ world = pd.read_csv('https://raw.githubusercontent.com/gavinr/world-countries-ce
 # <br>
 # 
 
-# In[18]:
+# In[106]:
 
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer    # VADER
@@ -757,7 +758,7 @@ lex[1010:1020]
 # 
 # > by nltk ([see model info](https://github.com/aesuli/SentiWordNet))
 
-# In[19]:
+# In[119]:
 
 
 import nltk
