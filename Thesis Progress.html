@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Thesis Progress &#8212; Sentiment Analysis</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Datasets for Sentiment Analysis and Aspect-Based Sentiment Analysis" href="Datasets.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo1.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sentiment Analysis</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction_to_SA.html">
+   Introduction to Sentiment Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lexicon_and_Machine_Learning.html">
+   Document-Level Sentiment Analysis with Lexicon and Machine Learning Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep_Learning.html">
+   Document Level Sentiment Analysis with Deep Learning Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GRACE_trained_for_ABSA_on_twitter_data.html">
+   Aspect-Based Sentiment Analysis on Twitter Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GRACE_trained_for_ABEA_on_twitter_data.html">
+   Aspect-Based Emotion Analysis on Twitter Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Twemlab_Aspect_Term_Annotation.html">
+   Annotating Twemlab Goldstandard Files to Include Aspect Term Labels
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Sentiment%20Analysis%20for%20Disaster%20Responses.html">
+   Sentiment Analysis in the Context of Disaster Responses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Datasets.html">
+   Datasets for Sentiment Analysis and Aspect-Based Sentiment Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Thesis Progress
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Thesis Progress.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FThesis Progress.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Thesis Progress.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-worries">
+   Current Worries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-questions">
+   Current Questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#potential-approach-to-thesis">
+   Potential Approach to Thesis
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Thesis Progress</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-worries">
+   Current Worries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-questions">
+   Current Questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#potential-approach-to-thesis">
+   Potential Approach to Thesis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="thesis-progress">
+<h1>Thesis Progress<a class="headerlink" href="#thesis-progress" title="Permalink to this headline">#</a></h1>
+<hr>
+<section id="current-worries">
+<h2>Current Worries<a class="headerlink" href="#current-worries" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The <strong>label frequencies</strong> of the twemlab goldstandard training dataset. This is the distribution of the overall 1625 goldstandard emotion labels:</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Value</th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>none</td>
+      <td>916</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>happiness</td>
+      <td>495</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>anger</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sadness</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fear</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p><strong>Size and standard of training data</strong>: The overall size of the training data for twemlab is 1625 and its aspect terms have been annotated by one individual “ad hoc” as per “Annotating Twemlab Goldstandard Files to Include Aspect Term Labels”.</li></p></li>
+<li><p><strong>Mearsuring performance</strong>: a robust testing dataset is needed. Above, I have shown a makeshift performance measure on the same dataset that the model was trained on. Drawing any meaningful conclusions based on this is precarious.</p></li>
+<li><p><strong>Use different training data vs. annotate?</strong> <a class="reference external" href="https://competitions.codalab.org/competitions/17751#learn_the_details-datasets">SemEval2018 Task1 Affect in Tweets</a> (anger: 1700, fear: 2200, joy: 1600, sadness: 1500)</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tweet</p></th>
+<th class="head"><p>Affect Dimension</p></th>
+<th class="head"><p>Intensity Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2017-En-10264</p></td>
+<td><p>&#64;xandraaa5 &#64;amayaallyn6 shut up hashtags are cool #offended</p></td>
+<td><p>anger</p></td>
+<td><p>0.562</p></td>
+</tr>
+<tr class="row-odd"><td><p>2017-En-10072</p></td>
+<td><p>it makes me so fucking irate jesus. nobody is calling ppl who like hajime abusive stop with the strawmen lmao</p></td>
+<td><p>anger</p></td>
+<td><p>0.750</p></td>
+</tr>
+<tr class="row-even"><td><p>2017-En-11383</p></td>
+<td><p>Lol Adam the Bull with his fake outrage…</p></td>
+<td><p>anger</p></td>
+<td><p>0.417</p></td>
+</tr>
+<tr class="row-odd"><td><p>2017-En-11102</p></td>
+<td><p>&#64;THATSSHAWTYLO passed away early this morning in a fast and furious styled car crash as he was leaving an ATL strip club. That’s rough stuff</p></td>
+<td><p>anger</p></td>
+<td><p>0.354</p></td>
+</tr>
+<tr class="row-even"><td><p>2017-En-20968</p></td>
+<td><p>&#64;RockSolidShow &#64;Pat_Francis #revolting cocks if you think I’m sexy!</p></td>
+<td><p>fear</p></td>
+<td><p>0.292</p></td>
+</tr>
+<tr class="row-odd"><td><p>2017-En-21816</p></td>
+<td><p>&#64;Its_just_Huong I will beat you !!! Always thought id be gryffindor so this is a whole new world for me 😨😨😨 #excited #afraid</p></td>
+<td><p>fear</p></td>
+<td><p>0.667</p></td>
+</tr>
+<tr class="row-even"><td><p>2017-En-40023</p></td>
+<td><p>This the most depressing shit ever</p></td>
+<td><p>sadness</p></td>
+<td><p>0.861</p></td>
+</tr>
+<tr class="row-odd"><td><p>2017-En-30793</p></td>
+<td><p>&#64;david_garrett Quite saddened…..no US dates, no joyous anticipation of attending a DG concert (since 2014). Happy you are keeping busy.</p></td>
+<td><p>joy</p></td>
+<td><p>0.140</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Training capacities</strong>: Batch size reduced due to out-of-memory errors. GRACE training is memory intensive (the authors use a nvidia tesla v100 gpu). Potential options: reduce float point precision? Currently having issues installing conda package for apex to do so.</p></li>
+</ul>
+</section>
+<section id="current-questions">
+<h2>Current Questions<a class="headerlink" href="#current-questions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><strong>Model optimisation</strong>? The GRACE model uses GeLU (an “advanced” activation function), the standard BERT nn.embeddings layer, 12 transformer encoder layers and 2 decoder layers. On top of that it has two classification heads (both nn.Linear). During training the model uses additional functions for virtaul adversarial training and gradient harmonized loss calculation.</p></li>
+<li><p><strong>Transfer Learning</strong>? Arguments for: fine-tuning is much more accurate than feature-extraction. And the most efficient way of fine-tuning a model that will likely need to be fine-tuned again and again is transfer learning (adapters)</p></li>
+</ul>
+<p>#<img src="https://github.com/Christina1281995/demo-repo/blob/main/transfernlp2.JPG?raw=true"></p>
+<!-- <img src="https://github.com/Christina1281995/demo-repo/blob/main/transfernlp2.JPG?raw=true" align="left" width="49%"> -->
+<img src="https://github.com/Christina1281995/demo-repo/blob/main/transfernlp.JPG?raw=true">
+<!-- <img src="https://github.com/Christina1281995/demo-repo/blob/main/transfernlp.JPG?raw=true" align="right" width="49%"> -->
+<br>
+<br>
+<ul class="simple">
+<li><p><strong>Create pipline for entire workflow</strong>?</p></li>
+</ul>
+<img src="https://github.com/Christina1281995/demo-repo/blob/main/piplineworkflow.png?raw=true" width="70%">
+</section>
+<section id="potential-approach-to-thesis">
+<h2>Potential Approach to Thesis<a class="headerlink" href="#potential-approach-to-thesis" title="Permalink to this headline">#</a></h2>
+<p><strong>“Pitch”</strong></p>
+<p>Aspect-based sentiment analysis (ABSA) has garnered attention in recent years due to its fine-grained approach to sentiment analysis. ABSA enables sentiment analysis at the entity or aspect level, instead of the entire document, resulting in better insights. ABSA has four sub-tasks, each identifying a different token-level piece of information. While numerous models have been developed for ABSA, there are only a handful of methods that have been applied to social media (Twitter) data for aspect term and sentiment extraction.</p>
+<p>However, current ABSA research has rarely explored the application of emotion detection for aspect-level sentiment analysis and it is not known that emotion detection has been applied to the End to End ABSA task. To date, there is also lacking research into the geographical distribution of emotions related to aspect terms. Additionally, there appears to be a lack of publicly available training data for aspect-level emotions on Twitter.</p>
+<p>Therefore, the thesis aims to generate a publicly accessible dataset for aspect-level emotions and investigate whether a model optimized for social media end-to-end ABSA can be trained on this more fine-grained data with comparable accuracy. The thesis will also explore whether this fine-grained approach, coupled with geographical analysis, reveals deeper and more varied insights into public opinion on specific aspect terms. The hypothesis is that a geographical analysis of aspect-based emotions provides a more nuanced geospatial view of the otherwise simplified “negative” and “positive” labels.</p>
+<hr>
+<img src="https://github.com/Christina1281995/demo-repo/blob/main/Picture3.png?raw=true" width="80%">
+<hr>
+<p>I. Introduction</p>
+<ul class="simple">
+<li><p>Background and motivation for the research (need for fine-grained geographical, semantic and sentiment related information in real-world use cases such as COVID-19)</p></li>
+<li><p>Research question, aims, and objectives</p></li>
+<li><p>Hypothesis (a geographical analysis of aspect-based emotions provides a more nuanced view of the otherwise simplified “negative” and “positive” labels)</p></li>
+<li><p>Outline of the thesis</p></li>
+</ul>
+<p>II. Literature Review</p>
+<ul class="simple">
+<li><p>Overview of sentiment analysis and ABSA</p></li>
+<li><p>Review of related work in aspect-level sentiment analysis</p></li>
+<li><p>Review of related work in emotion detection for ABSA</p></li>
+<li><p>Review of related work in geographical sentiment analysis</p></li>
+</ul>
+<p>III. Methodology</p>
+<ul class="simple">
+<li><p>Description of the proposed methodology for generating a dataset for aspect-level emotions (labelling standard, data collection and preprocessing)</p></li>
+<li><p>Description of the proposed methodology for training and testing the End to End ABSA model on the dataset (GRACE in some detail, performance metrics)</p></li>
+<li><p>Description of the proposed methodology for performing geographical analysis on the aspect-based emotions (hot spot analysis –Getis-Ord Gi*)</p></li>
+</ul>
+<p>IV. Results</p>
+<ul class="simple">
+<li><p>Description of the dataset and its properties (label distribution, count, stats of annotated twemlab goldstandard or SemEval 2018)</p></li>
+<li><p>Evaluation of the End to End ABSA model on the dataset (performance metrics)</p></li>
+<li><p>Analysis of the geographical distribution of aspect-based emotions (maps displaying aspect-term emotions)</p></li>
+<li><p>Comparison with geographical results of other methodologies (maps displaying sentiments: doc-level sentiment analysis and original ABSA model)</p></li>
+</ul>
+<p>V. Discussion</p>
+<ul class="simple">
+<li><p>Discussion of the results in relation to the research aims and hypothesis (does emotion ABSA show more detailed, nuanced view of the case study?)</p></li>
+<li><p>Reflection on the limitations of the research (transferability, training capacities, …)</p></li>
+</ul>
+<p>VI. Conclusion and Future Work</p>
+<ul class="simple">
+<li><p>Summary of the main findings</p></li>
+<li><p>Suggestions for future research (model optimisation, transfer learning, pipelining the approach …)</p></li>
+</ul>
+<p>VII. References</p>
+<ul class="simple">
+<li><p>List of cited works in the thesis</p></li>
+</ul>
+<p>VIII. Appendix</p>
+<ul class="simple">
+<li><p>Description of the dataset and its format</p></li>
+<li><p>Description of the End to End ABSA model (GRACE) and its parameters used for training etc.</p></li>
+</ul>
+<hr>
+<p><strong>Potential Research questions</strong></p>
+<ol class="simple">
+<li><p>Can a model optimised for social media end-to-end ABSA be trained on a more fine-grained set of emotions with comparable accuracy?</p></li>
+<li><p>How do the insights gained from analysing the emotions associated with aspect terms differ from those derived from traditional aspect-based sentiment analysis? (How can these insights be used to improve public opinion analysis?)</p></li>
+<li><p>What new insights can be gained from analysing the geographical distribution of aspect-based emotions, and how can this be used to inform decision-making processes?</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Datasets.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Datasets for Sentiment Analysis and Aspect-Based Sentiment Analysis</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

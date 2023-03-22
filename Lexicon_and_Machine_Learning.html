@@ -147,8 +147,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Sentiment%20Analysis%20for%20Disaster%20Responses.html">
+   Sentiment Analysis in the Context of Disaster Responses
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Datasets.html">
    Datasets for Sentiment Analysis and Aspect-Based Sentiment Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Thesis%20Progress.html">
+   Thesis Progress
   </a>
  </li>
 </ul>
@@ -435,49 +445,88 @@ title="Print to PDF"
 <p>Demo Dataset from the AIFER Project</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIFER example dataset size: 11177
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>    
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Load AIFER Dataset</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">aifer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../Data/Disaster_responses/ahrtal_tweets.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIFER example dataset size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">aifer</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># show df</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\util\_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\util\_decorators.py:331,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">_format_argument_list</span><span class="p">(</span><span class="n">allow_args</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\io\parsers\readers.py:950,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">948</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">950</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\io\parsers\readers.py:605,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">605</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\io\parsers\readers.py:1442,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1439</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1441</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1442</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\io\parsers\readers.py:1735,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1733</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1734</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1735</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1736</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1737</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1738</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1739</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1740</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1741</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1742</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1746</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File D:\Users\Christina\Programmes\envs\GRACE_GPU\lib\site-packages\pandas\io\common.py:856,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">851</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">852</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">856</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../Data/Disaster_responses/ahrtal_tweets.csv&#39;
 </pre></div>
 </div>
-<div class="output text_html"><style type="text/css">
-#T_dcd19 th {
-  text-align: left;
-}
-#T_dcd19_row0_col0, #T_dcd19_row0_col1, #T_dcd19_row0_col2, #T_dcd19_row1_col0, #T_dcd19_row1_col1, #T_dcd19_row1_col2, #T_dcd19_row2_col0, #T_dcd19_row2_col1, #T_dcd19_row2_col2 {
-  text-align: left;
-}
-</style>
-<table id="T_dcd19">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_dcd19_level0_col0" class="col_heading level0 col0" >Date</th>
-      <th id="T_dcd19_level0_col1" class="col_heading level0 col1" >Text</th>
-      <th id="T_dcd19_level0_col2" class="col_heading level0 col2" >Language</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_dcd19_level0_row0" class="row_heading level0 row0" >3204</th>
-      <td id="T_dcd19_row0_col0" class="data row0 col0" >2021-07-11 13:38:35</td>
-      <td id="T_dcd19_row0_col1" class="data row0 col1" >was ein Tipp: bist du arm dran und kannst es dir nicht leisten iwo besser zu leben na dann hast du zum glück neben einer viel befahrenenstraße weniger Miete +  hohes Gesundheitsrisiko🤩🤩😍😍  
-... CDU einfach eine schande 🤮</td>
-      <td id="T_dcd19_row0_col2" class="data row0 col2" >de</td>
-    </tr>
-    <tr>
-      <th id="T_dcd19_level0_row1" class="row_heading level0 row1" >10490</th>
-      <td id="T_dcd19_row1_col0" class="data row1 col0" >2021-07-30 20:58:41</td>
-      <td id="T_dcd19_row1_col1" class="data row1 col1" >@castlekitten47 @br_ricke @Esposito544Anna @BeateMermer @Francois7747 @Francois3064 @TomKnutson10 @zaratustra75 @KoesserSandra @carmen_borg60 @berg6bieu @wrigley_derrick @ArmellePrevot @Nikolay37836824 @Heike622 @AlineNathally3 @CaskettOlitz @luana_88_lima @MDegen55 I wish you a Good night Sharon, sleep well and have a magic weekend and happy Saturday. 💛💙 https://t.co/tRG0ARoCwg</td>
-      <td id="T_dcd19_row1_col2" class="data row1 col2" >en</td>
-    </tr>
-    <tr>
-      <th id="T_dcd19_level0_row2" class="row_heading level0 row2" >8144</th>
-      <td id="T_dcd19_row2_col0" class="data row2 col0" >2021-07-24 07:04:46</td>
-      <td id="T_dcd19_row2_col1" class="data row2 col1" >@Silke74918142 Guten Tag Silke ☕🙂🌄</td>
-      <td id="T_dcd19_row2_col2" class="data row2 col2" >de</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+</div>
 </div>
 <section id="rule-based-lexicon-approaches">
 <h2>Rule-Based/ Lexicon Approaches<a class="headerlink" href="#rule-based-lexicon-approaches" title="Permalink to this headline">#</a></h2>
@@ -568,41 +617,43 @@ Example of some words in the lexicon and their scores: <br></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_61667 th {
+#T_62832 th {
   text-align: left;
 }
-#T_61667_row0_col0, #T_61667_row0_col1, #T_61667_row1_col0, #T_61667_row1_col1, #T_61667_row2_col0, #T_61667_row2_col1, #T_61667_row3_col0, #T_61667_row3_col1 {
+#T_62832_row0_col0, #T_62832_row0_col1, #T_62832_row1_col0, #T_62832_row1_col1, #T_62832_row2_col0, #T_62832_row2_col1, #T_62832_row3_col0, #T_62832_row3_col1 {
   text-align: left;
 }
 </style>
-<table id="T_61667">
+<table id="T_62832">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_61667_level0_col0" class="col_heading level0 col0" >sentiment</th>
-      <th id="T_61667_level0_col1" class="col_heading level0 col1" >text</th>
+      <th id="T_62832_level0_col0" class="col_heading level0 col0" >sentiment</th>
+      <th id="T_62832_level0_col1" class="col_heading level0 col1" >text</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_61667_level0_row0" class="row_heading level0 row0" >10089</th>
-      <td id="T_61667_row0_col0" class="data row0 col0" >0.971600</td>
-      <td id="T_61667_row0_col1" class="data row0 col1" >@Mini_okdoksmok @MariahCarey That has been THE year 🥰🥰🥰</td>
+      <th id="T_62832_level0_row0" class="row_heading level0 row0" >4221</th>
+      <td id="T_62832_row0_col0" class="data row0 col0" >0.000000</td>
+      <td id="T_62832_row0_col1" class="data row0 col1" >@frederikbove But See here 
+
+https://t.co/rijMHOEfKW</td>
     </tr>
     <tr>
-      <th id="T_61667_level0_row1" class="row_heading level0 row1" >3646</th>
-      <td id="T_61667_row1_col0" class="data row1 col0" >0.980600</td>
-      <td id="T_61667_row1_col1" class="data row1 col1" >@MDegen55 Good morning my friend Gus. Enjoy the Tuesday. 😊😊Have a beautiful Sunshine Day. 🌞🍀🌞🌞🍨🍨🍵🍵 https://t.co/40QEmvkC6Y</td>
+      <th id="T_62832_level0_row1" class="row_heading level0 row1" >2835</th>
+      <td id="T_62832_row1_col0" class="data row1 col0" >0.865800</td>
+      <td id="T_62832_row1_col1" class="data row1 col1" >@MDegen55 The Tour de France is a real pleasure. Lots of Nature and Culture as well as tough Cycling. Better than any Sport broadcast in the World. Thank you French Television. https://t.co/Undxvs7Zds</td>
     </tr>
     <tr>
-      <th id="T_61667_level0_row2" class="row_heading level0 row2" >4045</th>
-      <td id="T_61667_row2_col0" class="data row2 col0" >0.361200</td>
-      <td id="T_61667_row2_col1" class="data row2 col1" >@jsneufeld @euro2021Athens Thank you, Janis</td>
+      <th id="T_62832_level0_row2" class="row_heading level0 row2" >1613</th>
+      <td id="T_62832_row2_col0" class="data row2 col0" >0.440400</td>
+      <td id="T_62832_row2_col1" class="data row2 col1" >@MDegen55 @Gloria91191464 Thailand Sea Elefant. Good night Gloria. Have a magical Wednesday. https://t.co/90XVpyVrZH</td>
     </tr>
     <tr>
-      <th id="T_61667_level0_row3" class="row_heading level0 row3" >4659</th>
-      <td id="T_61667_row3_col0" class="data row3 col0" >-0.773400</td>
-      <td id="T_61667_row3_col1" class="data row3 col1" >My thoughts and prayers go out to the families and their friends who has lost somebody in this horrible flood 😢😢😢🕊 - and prayers for those, who are missing , they ll be back safe soon 🖤❤️💛🇩🇪</td>
+      <th id="T_62832_level0_row3" class="row_heading level0 row3" >1466</th>
+      <td id="T_62832_row3_col0" class="data row3 col0" >0.440400</td>
+      <td id="T_62832_row3_col1" class="data row3 col1" >@GormallyMark @Esposito544Anna @BeateMermer @zaratustra75 @TomKnutson10 @Francois7747 @KoesserSandra @castlekitten47 @carmen_borg60 @Nikolay37836824 @berg6bieu @wrigley_derrick @ArmellePrevot @AlineNathally3 @CaskettOlitz @KellyDHarrison4 @luana_88_lima @Jenny_S3005 @MDegen55 Good morning. 🍀🍀 https://t.co/ze71vkcWTJ</td>
     </tr>
   </tbody>
 </table>
